@@ -87,7 +87,7 @@
 
 			_this.state = {
 				value: 999,
-				format: 'd'
+				format: '(d dd)'
 			};
 			return _this;
 		}
@@ -140,7 +140,7 @@
 					_react2.default.createElement(
 						'div',
 						{ style: ctrlStyle },
-						_react2.default.createElement(_RunningNumber2.default, { rnStyle: 'my-running-number', value: this.state.value, format: this.state.format })
+						_react2.default.createElement(_RunningNumber2.default, { rnStyle: 'my-running-number odometer odometer-theme-default', value: this.state.value, format: this.state.format })
 					)
 				);
 			}
@@ -19800,12 +19800,12 @@
 			}
 		}, {
 			key: 'getNewOdometer',
-			value: function getNewOdometer() {
+			value: function getNewOdometer(format) {
 				return new Odometer({
 					el: _reactDom2.default.findDOMNode(this),
 					value: 0,
 					theme: this.props.theme,
-					format: this.props.format,
+					format: format || this.props.format,
 					duration: this.props.duration
 				});
 			}
@@ -19826,7 +19826,20 @@
 			key: 'componentDidUpdate',
 			value: function componentDidUpdate() {
 				if (this.odometer) {
-					this.rAF(this.updateValue.bind(this));
+					//this.rAF(this.updateValue.bind(this));
+				}
+			}
+		}, {
+			key: 'componentWillReceiveProps',
+			value: function componentWillReceiveProps(nextProps) {
+				var _this2 = this;
+
+				if (this.props.format !== nextProps.format) {
+					_reactDom2.default.findDOMNode(this).removeChild(_reactDom2.default.findDOMNode(this).lastChild);
+					this.rAF(function () {
+						_this2.odometer = _this2.getNewOdometer(nextProps.format);
+						_this2.rAF(_this2.updateValue.bind(_this2));
+					});
 				}
 			}
 		}, {

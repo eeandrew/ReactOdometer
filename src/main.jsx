@@ -8,7 +8,7 @@ class TestRunningNumber extends React.Component {
 		super();
 		this.state = {
 			value:999,
-			format:'d',
+			format:'(d dd)',
 		};
 	}
 
@@ -39,7 +39,7 @@ class TestRunningNumber extends React.Component {
 					<span>Change Format</span><input value={this.state.format}  onChange={this.handleFormatChange.bind(this)}/>
 				</div>
 				<div style={ctrlStyle}>
-					<RunningNumber rnStyle="my-running-number" value={this.state.value} format={this.state.format}/>
+					<RunningNumber rnStyle="my-running-number odometer odometer-theme-default" value={this.state.value} format={this.state.format}/>
 				</div>
 			</div>
 		);

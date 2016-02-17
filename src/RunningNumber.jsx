@@ -11,12 +11,12 @@ export default class RunningNumber extends React.Component {
 		}
 	}
 
-	getNewOdometer() {
+	getNewOdometer(format) {
 		return  new Odometer({
 				el : ReactDom.findDOMNode(this),
 				value : 0,
 				theme: this.props.theme,
-				format : this.props.format,
+				format : format || this.props.format,
 				duration : this.props.duration,
 			});
 	}
@@ -37,7 +37,17 @@ export default class RunningNumber extends React.Component {
 
 	componentDidUpdate() {
 		if(this.odometer) {
-			this.rAF(this.updateValue.bind(this));
+			//this.rAF(this.updateValue.bind(this));
+		}
+	}
+
+	componentWillReceiveProps(nextProps) {
+		if(this.props.format !== nextProps.format) {
+			ReactDom.findDOMNode(this).removeChild(ReactDom.findDOMNode(this).lastChild)
+			this.rAF(()=>{
+				this.odometer = this.getNewOdometer(nextProps.format);
+				this.rAF(this.updateValue.bind(this));
+			})
 		}
 	}
 
