@@ -8,5 +8,14 @@
 
 ![image](https://github.com/eeandrew/ReadmeResource/blob/master/img/react-odometer/react-odometer.gif)
 
-##TODO
+# 使用
+* rnStyle : css类名。用于定制显示的格式
+* value : 显示的值
+* format : 显示的格式。如11,222。请参考[这里](http://github.hubspot.com/odometer/)
+
+```
+  <RunningNumber rnStyle="my-running-number" value={this.state.value} format={this.state.format}/>
+```
+
+# TODO
 * [ ] 动态更改odometer的format
