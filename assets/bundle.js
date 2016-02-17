@@ -19812,7 +19812,10 @@
 		}, {
 			key: 'rAF',
 			value: function rAF(callback) {
-				return window.requestAnimationFrame(callback) || window.setTimeout(callback, 1);
+				var onNextFrame = window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.oRequestAnimationFrame || window.msRequestAnimationFrame || function (callback) {
+					window.setTimeout(callback, 1000 / 60);
+				};
+				return onNextFrame(callback);
 			}
 		}, {
 			key: 'updateValue',
