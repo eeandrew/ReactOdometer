@@ -1,12 +1,12 @@
-# ReactSwipe
-基于react的左右滑动控件, inspired by iScroll
+# ReactOdometer
+将Odometer转化为react控件。
 
-##[DEMO](http://eeandrew.github.io/demos/reactswipe/index.html)
+# 注意
+这个控件并没有试图替代[odometer](https://github.com/HubSpot/odometer)，只是把odometer的api封装为react的api而已。你依然需要引入odometer的js和css文件。
 
-![image](https://github.com/eeandrew/ReadmeResource/blob/master/img/reactswipe/react-swipe-demo.gif)
+##[DEMO](http://eeandrew.github.io/demos/reactodometer/index.html)
+
+![image](https://github.com/eeandrew/ReadmeResource/blob/master/img/react-odometer/react-odometer.gif)
 
 ##TODO
-基于react的state数据改变来渲染dom，在手机上实测动画非常卡。
-* 提升动画流畅度
-* 提供滑动位置接口
-* 提供style更改接口
+* [ ] 动态更改odometer的format
