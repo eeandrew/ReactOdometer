@@ -19826,20 +19826,16 @@
 			key: 'componentDidUpdate',
 			value: function componentDidUpdate() {
 				if (this.odometer) {
-					//this.rAF(this.updateValue.bind(this));
+					this.rAF(this.updateValue.bind(this));
 				}
 			}
 		}, {
 			key: 'componentWillReceiveProps',
 			value: function componentWillReceiveProps(nextProps) {
-				var _this2 = this;
-
 				if (this.props.format !== nextProps.format) {
 					_reactDom2.default.findDOMNode(this).removeChild(_reactDom2.default.findDOMNode(this).lastChild);
-					this.rAF(function () {
-						_this2.odometer = _this2.getNewOdometer(nextProps.format);
-						_this2.rAF(_this2.updateValue.bind(_this2));
-					});
+					_reactDom2.default.findDOMNode(this).odometer = null;
+					this.odometer = this.getNewOdometer(nextProps.format);
 				}
 			}
 		}, {
@@ -19868,7 +19864,7 @@
 		format: 'd',
 		theme: 'default',
 		rnStyle: '',
-		duration: 10000
+		duration: 1000
 	};
 
 /***/ },
