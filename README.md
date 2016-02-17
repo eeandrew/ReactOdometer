@@ -21,4 +21,4 @@
 ```
 
 # TODO
-* [ ] 动态更改odometer的format
+* [x] 动态更改odometer的format
