@@ -19794,7 +19794,6 @@
 			value: function componentDidMount() {
 				if (Odometer) {
 					this.odometer = this.getNewOdometer();
-
 					this.rAF(this.updateValue.bind(this));
 				}
 			}
@@ -19833,9 +19832,10 @@
 			key: 'componentWillReceiveProps',
 			value: function componentWillReceiveProps(nextProps) {
 				if (this.props.format !== nextProps.format) {
-					_reactDom2.default.findDOMNode(this).removeChild(_reactDom2.default.findDOMNode(this).lastChild);
-					_reactDom2.default.findDOMNode(this).odometer = null;
-					this.odometer = this.getNewOdometer(nextProps.format);
+					//Format Hack. 请参考odometer源码理解下面代码
+					this.odometer.options.format = nextProps.format;
+					this.odometer.resetFormat();
+					this.odometer.render();
 				}
 			}
 		}, {

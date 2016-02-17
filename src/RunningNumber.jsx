@@ -6,7 +6,6 @@ export default class RunningNumber extends React.Component {
 	componentDidMount() {
 		if(Odometer) {
 			this.odometer = this.getNewOdometer();
-
 			this.rAF(this.updateValue.bind(this));
 		}
 	}
@@ -43,9 +42,10 @@ export default class RunningNumber extends React.Component {
 
 	componentWillReceiveProps(nextProps) {
 		if(this.props.format !== nextProps.format) {
-			ReactDom.findDOMNode(this).removeChild(ReactDom.findDOMNode(this).lastChild)
-			ReactDom.findDOMNode(this).odometer = null;
-			this.odometer = this.getNewOdometer(nextProps.format);
+			//Format Hack. 请参考odometer源码理解下面代码
+			this.odometer.options.format = nextProps.format;
+			this.odometer.resetFormat();
+			this.odometer.render();
 		}
 	}
 
