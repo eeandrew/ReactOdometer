@@ -9,6 +9,9 @@
 ![image](https://github.com/eeandrew/ReadmeResource/blob/master/img/react-odometer/react-odometer.gif)
 
 # 使用
+
+**在你的文件中引入odometer.js和odometer.css文件**
+
 * rnStyle : css类名。用于定制显示的格式
 * value : 显示的值
 * format : 显示的格式。如11,222。请参考[这里](http://github.hubspot.com/odometer/)
