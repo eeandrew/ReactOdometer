@@ -22,3 +22,4 @@
 
 # TODO
 * [x] 动态更改odometer的format
+* [ ] 动画duration接口
